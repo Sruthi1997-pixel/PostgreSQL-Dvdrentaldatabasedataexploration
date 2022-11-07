@@ -62,6 +62,26 @@ FROM customer
 WHERE first_name LIKE 'E%' AND address_id < 500
 ORDER BY customer_id DESC LIMIT 1;
 
+** INNER JOIN-customer table,payment table (here customer_id is present in both the tables,so I am mentioning it with table name,first_name is unique and is peresent in customer table,so need to mention it by .tablename **
 
+SELECT payment,payment.customer_id,first_name
+FROM payment
+INNER JOIN customer
+ON payment.customer_id=customer.customer_id;
+
+** FULL OUTER JOIN-grabs everything from both the tables,whether there is a match in both the tables or whether info is present only in one table **
+SELECT * FROM registrations
+FULL OUTER JOIN logins
+ON registrations.name=logins.name
+
+*** We have introduced new privacy policy where we do not want customers who have never purchased anything or a payment which is not associated with the customer***
+*** FULL OUTER JOIN with WHERE ***
+SELECT * FROM registrations
+FULL OUTER JOIN logins
+ON registrations.name=logins.name
+WHERE registrations.reg_id IS NULL OR
+logins.log_id IS NULL
+
+*** FULL OUTER JOIN results in records which are unique to both the tables,there is no match ****
 
 
