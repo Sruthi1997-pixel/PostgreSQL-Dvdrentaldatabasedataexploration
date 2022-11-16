@@ -74,7 +74,7 @@ SELECT * FROM registrations
 FULL OUTER JOIN logins
 ON registrations.name=logins.name
 
-*** We have introduced new privacy policy where we do not want customers who have never purchased anything or a payment which is not associated with the customer***
+***** We have introduced new privacy policy where we do not want customers who have never purchased anything or a payment which is not associated with the customer*****
 *** FULL OUTER JOIN with WHERE ***
 SELECT * FROM registrations
 FULL OUTER JOIN logins
@@ -84,7 +84,7 @@ logins.log_id IS NULL
 
 *** FULL OUTER JOIN results in records which are unique to both the tables,there is no match ****
 
-*** How can we get a list of students who scored better than the average grade *****
+***** How can we get a list of students who scored better than the average grade *******
 SELECT grade,student FROM
 test_score 
 WHERE grade> (SELECT AVG(grade) FROM test_score)
