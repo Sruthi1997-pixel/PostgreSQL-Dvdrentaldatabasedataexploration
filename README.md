@@ -84,4 +84,8 @@ logins.log_id IS NULL
 
 *** FULL OUTER JOIN results in records which are unique to both the tables,there is no match ****
 
+*** How can we get a list of students who scored better than the average grade *****
+SELECT grade,student FROM
+test_score 
+WHERE grade> (SELECT AVG(grade) FROM test_score)
 
