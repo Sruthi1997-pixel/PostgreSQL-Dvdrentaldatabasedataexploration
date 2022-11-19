@@ -45,6 +45,7 @@ HAVING sum(amount) > 100;
 **6.COMPLETE THE FOLLOWING TASKS!
 **
 a. Return the customer IDs of customers who have spent at least $110 with the staff member who has an ID of 2.**
+
 SELECT customer_id,sum(amount)
 FROM payment
 WHERE staff_id=2
@@ -70,12 +71,14 @@ INNER JOIN customer
 ON payment.customer_id=customer.customer_id;
 
 ** FULL OUTER JOIN-grabs everything from both the tables,whether there is a match in both the tables or whether info is present only in one table **
+
 SELECT * FROM registrations
 FULL OUTER JOIN logins
 ON registrations.name=logins.name
 
 ***** We have introduced new privacy policy where we do not want customers who have never purchased anything or a payment which is not associated with the customer*****
 *** FULL OUTER JOIN with WHERE ***
+
 SELECT * FROM registrations
 FULL OUTER JOIN logins
 ON registrations.name=logins.name
@@ -85,11 +88,13 @@ logins.log_id IS NULL
 *** FULL OUTER JOIN results in records which are unique to both the tables,there is no match ****
 
 **** During which months did the payments occur? *****
+
 SELECT DISTINCT TO_CHAR(payment_date,'month') FROM payment;
 
 SELECT * FROM payment;
 
 **** How many payments occured on a Monday? ******
+
 SELECT COUNT(*) FROM payment
 WHERE EXTRACT(dow FROM payment_date)=1;
 
