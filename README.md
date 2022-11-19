@@ -84,8 +84,25 @@ logins.log_id IS NULL
 
 *** FULL OUTER JOIN results in records which are unique to both the tables,there is no match ****
 
+**** During which months did the payments occur? *****
+SELECT DISTINCT TO_CHAR(payment_date,'month') FROM payment;
+
+SELECT * FROM payment;
+
+**** How many payments occured on a Monday? ******
+SELECT COUNT(*) FROM payment
+WHERE EXTRACT(dow FROM payment_date)=1;
+
+SELECT * FROM customer;
+SELECT length(first_name) FROM customer;
+SELECT first_name  || last_name || '@gmail.com' FROM customer;
+SELECT LOWER(LEFT(first_name,1)) || LOWER(last_name) || '@gmail.com' AS custom_email FROM customer;
+
 ***** How can we get a list of students who scored better than the average grade *******
 SELECT grade,student FROM
 test_score 
 WHERE grade> (SELECT AVG(grade) FROM test_score)
+
+
+**** Subquery can also operate on separate table ****
 
